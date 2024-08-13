@@ -8,10 +8,10 @@ part of 'downloads.dart';
 
 _$DownloadsImpl _$$DownloadsImplFromJson(Map<String, dynamic> json) =>
     _$DownloadsImpl(
-      backdrop_path: json['backdrop_path'] as String?,
+      url: json['url'] as String?,
     );
 
 Map<String, dynamic> _$$DownloadsImplToJson(_$DownloadsImpl instance) =>
     <String, dynamic>{
-      'backdrop_path': instance.backdrop_path,
+      'url': instance.url,
     };

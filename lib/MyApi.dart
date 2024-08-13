@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 
 class MyApi extends StatefulWidget {
@@ -61,7 +60,7 @@ class _MyApiState extends State<MyApi> {
       builder: (ctx, snpashot) {
         if (snpashot.hasData) {
           return ListView.builder(itemBuilder: (ctx, index) {
-            return Text("snapshot");
+            return const Text("snapshot");
           });
         } else {
           return const Text('empy');

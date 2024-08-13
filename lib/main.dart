@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:ecomy/MyApi.dart';
 import 'package:ecomy/application/downloads/downloads_bloc.dart';
+import 'package:ecomy/application/fast_laugh/fast_laugh_bloc.dart';
 import 'package:ecomy/domain/downlads/core/di/injectable.dart';
 import 'package:ecomy/presentation/main_page/widgets/screen_main_page.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (ctx) => getIt<DownloadsBloc>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<FastLaughBloc>(),
         ),
       ],
       child: MaterialApp(

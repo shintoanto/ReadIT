@@ -10,6 +10,7 @@
 analyzer:
   errors:
     invalid_annotation_target: ignore
+    unnecessary_nullable_for_final_variable_declarations: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:

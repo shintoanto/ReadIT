@@ -1,17 +1,10 @@
-import 'dart:math';
-
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
-import 'package:ecomy/MyApi.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:ecomy/domain/downlads/core/failure/main_failure.dart';
 import 'package:ecomy/domain/downlads/downloadEndPoints.dart';
 import 'package:ecomy/domain/downlads/i_downloads_repo.dart';
 import 'package:ecomy/domain/downlads/models/downloads.dart';
-import 'package:ecomy/infrastructure/api_key.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
-import 'package:http/http.dart' as http;
 
 @LazySingleton(as: IDownloadsRepo)
 class DownloadsRepository implements IDownloadsRepo {
@@ -22,30 +15,28 @@ class DownloadsRepository implements IDownloadsRepo {
     try {
       print(DownloadEndPoints.kEndPoint);
 
-      //  final Response response = await Dio(
-      //   BaseOptions(headers: {
-      //     'Authorization': 'Bearer $token',
-      //     'accept': 'application/json',
-      //   }),
-      // ).get(DownloadEndPoints.kEndPoint);
+      final dio.Response response = await dio.Dio(
+        dio.BaseOptions(
+          connectTimeout: const Duration(seconds: 30),
+          receiveTimeout: const Duration(seconds: 30),
+        ),
+      ).get(DownloadEndPoints.kEndPoint);
 
-      final response =
-          await http.get(Uri.parse(DownloadEndPoints.kEndPoint), headers: {
-        'Authorization': 'Bearer $token',
-        'accept': 'application/json',
-      }).then((e) {
-        print(e.request.toString());
-      });
+      // final response = await http.get(Uri.parse(DownloadEndPoints.kEndPoint));
+      // // print(response);
 
-      print(response.body);
+      // print(response.body);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        final downloadList = (response.body[1] as List).map((e) {
-          return Downloads.fromJson(e);
+        List<Downloads> newList = [];
+
+        (response.data as List).map((e) {
+          newList.add(Downloads.fromJson(e));
+
+          // Downloads.fromJson(e);
         }).toList();
 
-        // print(downloadList);
-        return Right(downloadList);
+        return Right(newList);
       } else {
         return const Left(MainFailure.serverFailure());
       }

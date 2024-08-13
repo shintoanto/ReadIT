@@ -3,9 +3,7 @@ import 'dart:math';
 import 'package:ecomy/application/downloads/downloads_bloc.dart';
 import 'package:ecomy/presentation/common/constants.dart';
 import 'package:ecomy/presentation/common/gen_app_bar.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DownloadsScreen extends StatelessWidget {
@@ -39,9 +37,7 @@ class DownloadsScreen extends StatelessWidget {
 }
 
 class _SmartDownloads extends StatelessWidget {
-  const _SmartDownloads({
-    super.key,
-  });
+  const _SmartDownloads();
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +65,7 @@ class Section2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<DownloadsBloc>(context)
           .add(const DownloadsEvent.getDownloadsImage());
     });
@@ -94,80 +90,82 @@ class Section2 extends StatelessWidget {
             return SizedBox(
               width: size.width,
               height: size.width,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Center(
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey.withOpacity(0.4),
-                      radius: size.width * 0.40,
-                    ),
-                  ),
+              child: state.isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Center(
+                          child: CircleAvatar(
+                            backgroundColor: Colors.grey.withOpacity(0.4),
+                            radius: size.width * 0.40,
+                          ),
+                        ),
 
-                  // aot
-                  Padding(
-                    padding: const EdgeInsets.only(right: 160, top: 30),
-                    child: Transform.rotate(
-                      angle: -25 * pi / 180,
-                      child: Container(
-                        // margin: const EdgeInsets.only(right: 140, bottom: 45),
-                        width: size.width * 0.35,
-                        height: size.width * 0.55,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              images[1],
+                        // aot
+                        Padding(
+                          padding: const EdgeInsets.only(right: 160, top: 30),
+                          child: Transform.rotate(
+                            angle: -25 * pi / 180,
+                            child: Container(
+                              // margin: const EdgeInsets.only(right: 140, bottom: 45),
+                              width: size.width * 0.35,
+                              height: size.width * 0.55,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    '${state.downloads?[0].url}',
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
 
-                  Padding(
-                    padding: const EdgeInsets.only(left: 160, top: 30),
-                    child: Transform.rotate(
-                      angle: 25 * pi / 180,
-                      child: Container(
-                        width: size.width * 0.35,
-                        height: size.width * 0.55,
-                        //margin: const EdgeInsets.only(left: 140, bottom: 45),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              images[2],
+                        Padding(
+                          padding: const EdgeInsets.only(left: 160, top: 30),
+                          child: Transform.rotate(
+                            angle: 25 * pi / 180,
+                            child: Container(
+                              width: size.width * 0.35,
+                              height: size.width * 0.55,
+                              //margin: const EdgeInsets.only(left: 140, bottom: 45),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    '${state.downloads?[1].url}',
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
 
-                  // samu
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Transform.rotate(
-                      angle: 0 * pi / 180,
-                      child: Container(
-                        margin: const EdgeInsets.only(bottom: 5),
-                        width: size.width * 0.4,
-                        height: size.width * 0.6,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                              images[0],
+                        // samu
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Transform.rotate(
+                            angle: 0 * pi / 180,
+                            child: Container(
+                              margin: const EdgeInsets.only(bottom: 5),
+                              width: size.width * 0.4,
+                              height: size.width * 0.6,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                    '${state.downloads?[2].url}',
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
             );
           },
         ),
@@ -190,7 +188,9 @@ class Section3 extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
-            child: Padding(
+            color: Colors.blue,
+            textColor: Colors.white,
+            child: const Padding(
               padding: EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 'Setup',
@@ -200,8 +200,6 @@ class Section3 extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
             ),
-            color: Colors.blue,
-            textColor: Colors.white,
           ),
         ),
         kHight,
@@ -210,13 +208,13 @@ class Section3 extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
           ),
-          child: Text(
+          color: Colors.green[50],
+          textColor: Colors.white,
+          child: const Text(
             'See What You Can Download',
             style: TextStyle(
                 color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          color: Colors.green[50],
-          textColor: Colors.white,
         ),
       ],
     );

@@ -1,10 +1,6 @@
-import 'dart:math';
 
 import 'package:ecomy/presentation/common/constants.dart';
-import 'package:ecomy/presentation/common/gen_app_bar.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Newsandhot extends StatelessWidget {
   const Newsandhot({super.key});
@@ -15,7 +11,7 @@ class Newsandhot extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50),
+          preferredSize: const Size.fromHeight(50),
           child: AppBar(
             actions: [
               const Icon(
@@ -45,7 +41,7 @@ class Newsandhot extends StatelessWidget {
             ),
           ),
         ),
-        body: TabBarView(children: [_funcCommon(context), Text('hello')]),
+        body: TabBarView(children: [_funcCommon(context), const Text('hello')]),
       ),
     );
   }

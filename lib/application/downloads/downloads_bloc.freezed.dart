@@ -273,7 +273,7 @@ class __$$DownloadsStateImplCopyWithImpl<$Res>
 class _$DownloadsStateImpl implements _DownloadsState {
   const _$DownloadsStateImpl(
       {required this.isLoading,
-      final List<Downloads>? downloads,
+      required final List<Downloads>? downloads,
       required this.downloadsFailureOrSucces})
       : _downloads = downloads;
 
@@ -329,7 +329,7 @@ class _$DownloadsStateImpl implements _DownloadsState {
 abstract class _DownloadsState implements DownloadsState {
   const factory _DownloadsState(
       {required final bool isLoading,
-      final List<Downloads>? downloads,
+      required final List<Downloads>? downloads,
       required final Option<Either<MainFailure, List<Downloads>>>
           downloadsFailureOrSucces}) = _$DownloadsStateImpl;
 

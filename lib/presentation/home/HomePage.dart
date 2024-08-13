@@ -1,11 +1,8 @@
 import 'package:ecomy/presentation/common/constants.dart';
 import 'package:ecomy/presentation/common/gen_app_bar.dart';
 import 'package:ecomy/presentation/common/main_title.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 ValueNotifier<bool> ScrollNotifier = ValueNotifier(false);
 
@@ -97,14 +94,14 @@ class Homepage extends StatelessWidget {
                         ),
                         const MainTitleCard(titles: "Released"),
                         const MainTitleCard(titles: "Trending Now"),
-                        NumberCard(index: 3)
+                        const NumberCard(index: 3)
                       ],
                     ),
                   ],
                 ),
                 ScrollNotifier.value == true
                     ? AnimatedContainer(
-                        duration: Duration(milliseconds: 1000),
+                        duration: const Duration(milliseconds: 1000),
                         width: double.infinity,
                         height: 60,
                         color: Colors.black.withOpacity(0.3),
@@ -117,7 +114,7 @@ class Homepage extends StatelessWidget {
                                   height: 50,
                                   width: 50,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 const Icon(
                                   Icons.cast,
                                   color: Colors.white,
@@ -209,7 +206,7 @@ class MainCard extends StatelessWidget {
 }
 
 class NumberCard extends StatelessWidget {
-  NumberCard({super.key, required this.index});
+  const NumberCard({super.key, required this.index});
   final int index;
 
   @override

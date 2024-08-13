@@ -1,9 +1,7 @@
 import 'package:ecomy/presentation/common/constants.dart';
 import 'package:ecomy/presentation/search/MoviesTv.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 const bgImg =
     'https://media.themoviedb.org/t/p/w533_and_h300_bestv2/mOlEbXcb6ufRJKogI35KqsSlCfB.jpg';
@@ -38,7 +36,7 @@ class SearchIdle extends StatelessWidget {
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               kHight,
-              MovieResult(),
+              const MovieResult(),
               // Expanded(
               //   child: ListView.separated(
               //       shrinkWrap: true,
@@ -76,13 +74,13 @@ class TopSearchItemSeperated extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
+          const Expanded(
               child: Text(
             'movie name',
             style: TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
           )),
-          CircleAvatar(
+          const CircleAvatar(
             backgroundColor: kWhite,
             maxRadius: 20,
             child: CircleAvatar(

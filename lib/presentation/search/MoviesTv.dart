@@ -1,6 +1,3 @@
-import 'package:ecomy/presentation/common/constants.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class MovieResult extends StatelessWidget {
@@ -44,6 +41,6 @@ class MainCard extends StatelessWidget {
     //     ),
     //   ),
     // );
-    return Text("text");
+    return const Text("text");
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 // Dimen
 const kWidth = SizedBox(width: 10);
