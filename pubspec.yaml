@@ -45,6 +45,16 @@ dependencies:
   video_player: ^2.3.0
   pdfx: ^2.6.0
   photo_manager: ^3.0.0-dev.5
+  url_launcher: ^6.3.0
+#  flutter_animated_cards: ^0.0.2
+  flutter_staggered_animations: ^1.0.0
+  photo_view: ^0.14.0
+  sensors_plus: ^6.0.1
+  flutter_cube: ^0.1.1
+  webview_flutter: ^4.0.0
+  lottie: 3.1.2
+
+
 
 dev_dependencies:
   build_runner: ^2.1.8
@@ -55,6 +65,7 @@ dev_dependencies:
   injectable_generator: ^1.5.3
   json_annotation: ^4.9.0
   json_serializable: ^6.8.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -68,6 +79,17 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/demon_slayer.pdf
+    - assets/aot3.jpeg
+    - assets/ozumaki.jpg
+    - assets/naruto_symbol.png
+    - assets/naru_sym.webp
+    - assets/berserk_vol1.pdf
+    - assets/mushokutensai.pdf
+    - assets/berserk2.jpeg
+    - assets/demo1.jpeg
+    - assets/goju.jpg
+    - assets/power_lote.json
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

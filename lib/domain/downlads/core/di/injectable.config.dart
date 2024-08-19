@@ -8,9 +8,13 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../../../application/downloads/downloads_bloc.dart' as _i5;
-import '../../../../application/fast_laugh/fast_laugh_bloc.dart' as _i6;
+import '../../../../application/downloads/downloads_bloc.dart' as _i7;
+import '../../../../application/fast_laugh/fast_laugh_bloc.dart' as _i8;
+import '../../../../application/g_books/bloc/g_book_bloc_bloc.dart' as _i9;
 import '../../../../infrastructure/downloads/downloads_repository.dart' as _i4;
+import '../../../../infrastructure/gBooksRepository/GBooksRepository.dart'
+    as _i6;
+import '../../../gBookImages/models/i_g_bookImage_repository.dart' as _i5;
 import '../../i_downloads_repo.dart'
     as _i3; // ignore_for_file: unnecessary_lambdas
 
@@ -27,9 +31,12 @@ _i1.GetIt $initGetIt(
     environmentFilter,
   );
   gh.lazySingleton<_i3.IDownloadsRepo>(() => _i4.DownloadsRepository());
-  gh.factory<_i5.DownloadsBloc>(
-      () => _i5.DownloadsBloc(get<_i3.IDownloadsRepo>()));
-  gh.factory<_i6.FastLaughBloc>(
-      () => _i6.FastLaughBloc(get<_i3.IDownloadsRepo>()));
+  gh.lazySingleton<_i5.IGBookImageRepo>(() => _i6.GBooksRepository());
+  gh.factory<_i7.DownloadsBloc>(
+      () => _i7.DownloadsBloc(get<_i3.IDownloadsRepo>()));
+  gh.factory<_i8.FastLaughBloc>(
+      () => _i8.FastLaughBloc(get<_i3.IDownloadsRepo>()));
+  gh.factory<_i9.GBookBlocBloc>(
+      () => _i9.GBookBlocBloc(get<_i5.IGBookImageRepo>()));
   return get;
 }

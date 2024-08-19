@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:ecomy/application/downloads/downloads_bloc.dart';
 import 'package:ecomy/application/fast_laugh/fast_laugh_bloc.dart';
+import 'package:ecomy/application/g_books/bloc/g_book_bloc_bloc.dart';
 import 'package:ecomy/domain/downlads/core/di/injectable.dart';
 import 'package:ecomy/presentation/main_page/widgets/screen_main_page.dart';
+import 'package:ecomy/presentation/main_page/widgets/splash/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,11 +24,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        // BlocProvider(
+        //   create: (ctx) => getIt<DownloadsBloc>(),
+        // ),
+        // BlocProvider(
+        //   create: (ctx) => getIt<FastLaughBloc>(),
+        // ),
         BlocProvider(
-          create: (ctx) => getIt<DownloadsBloc>(),
-        ),
-        BlocProvider(
-          create: (ctx) => getIt<FastLaughBloc>(),
+          create: (ctx)=> getIt<GBookBlocBloc>(),
         ),
       ],
       child: MaterialApp(
@@ -50,7 +55,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black,
           useMaterial3: true,
         ),
-        home: ScreenMainPage(),
+        home:const splashscreen(),
       ),
     );
   }
